@@ -1,0 +1,20 @@
+/* base settings */
+body {
+    font-family: 'poppins'; sans-serif;
+    margin :0;
+    padding : 0;
+    overflow-x: hidden;
+
+}
+
+/* visual design - background and overlay */
+.app-background{ /*   <div class="app-background"></div>  */
+    position:fixed;
+    top: 0;
+    left:0;
+    width:100;
+    height:100;
+    
+
+}
+
