@@ -53,4 +53,25 @@ body {
 }
 
 
+/* design scrollbar */
 
+/*  HTML "Recent Activity" 
+
+- <div id="feed-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 pb-20 overflow-y-auto">
+                </div>  */
+
+                /* HTML "Report From " -  
+                
+            <div class="glass-card w-full max-w-lg relative z-10 p-6 fade-in max-h-[90vh] overflow-y-auto"> */
+
+::-webkit-scrollbar { 
+    width: 8px;  /* scrollbar width */
+}
+::-webkit-scrollbar-track {
+    background : rgb (255,255,255,0.1); /* scrollbar track color */
+}
+
+::-webkit-scrollbar-thumb{ 
+    background-color: rgb (255,255,255,0.3); /* scrollbar thumb color */
+    border-radius: 4px; /* scrollbar thumb rounded corners */;
+}
