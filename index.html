@@ -34,17 +34,29 @@
                     transition-colors">Faculty</button> <!-- Student/Faculty tabs -->
                 </div>
 
-                <form id="login-form" onsubmit="handleLogin(event)" class="space-y-4">
+
+
+
+
+
+
+
+                 <!--Login Form Section-->
+                <form id="login-form" onsubmit="handleLogin(event)" class="space-y-4"> <!--Page not reloaded and login handled (handleLogin(event))-->
+
+                    <!--Name Input Section-->
                     <div>
-                        <label class="block text-xs font-semibold text-gray-600 uppercase mb-1">Full Name</label>
-                        <input type="text" id="user-name" required placeholder="Ex. Rahul Roy" class="w-full p-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 bg-white/50">
-                    </div>
-                    
-                    <div>
-                        <label class="block text-xs font-semibold text-gray-600 uppercase mb-1">Phone Number</label>
-                        <input type="tel" id="user-phone" required pattern="[0-9]{10}" placeholder="Ex. 9876543210" class="w-full p-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 bg-white/50">
+                        <label class="block text-xs font-semibold text-gray-600 uppercase mb-1">Full Name</label> <!-- Full Name field -->
+                        <input type="text" id="user-name" required placeholder="Ex. Rahul Roy" class="w-full p-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 bg-white/50"> <!-- Input field styling -->
                     </div>
 
+                    <!--Phone Number Input Section-->
+                    <div>
+                        <label class="block text-xs font-semibold text-gray-600 uppercase mb-1">Phone Number</label> <!-- Phone Number field -->
+                        <input type="tel" id="user-phone" required pattern="[0-9]{10}"  placeholder="Ex. 9876543210" class="w-full p-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 bg-white/50"> <!-- Input field styling -->
+                    </div>
+                     
+                    <!--Department Input Section-->
                     <div class="grid grid-cols-2 gap-4">
                         <div>
                             <label class="block text-xs font-semibold text-gray-600 uppercase mb-1">Department</label>
@@ -54,24 +66,40 @@
                                 <option>ME</option>
                                 <option>BBA</option>
                                 <option>Pharmacy</option>
+                                <option>Law</option>
+                                <option>Other</option>  
+                        
                             </select>
                         </div>
+
+                        <!--ID Number Input Section-->
                         <div>
                             <label class="block text-xs font-semibold text-gray-600 uppercase mb-1">ID Number</label>
                             <input type="text" id="user-id" required placeholder="JIS/..." class="w-full p-3 rounded-lg border border-gray-300 bg-white/50">
                         </div>
                     </div>
 
+
+                    <!--Submit Button-->
                     <button type="submit" class="w-full py-3 mt-4 bg-blue-900 hover:bg-blue-800 text-white font-bold rounded-lg shadow-md transition-transform transform active:scale-95">
                         Access Portal <i class="fa-solid fa-arrow-right ml-2"></i>
-                    </button>
+                    </button> <!-- Arrow Right ICON -->
                 </form>
             </div>
         </section>
 
-        <section id="dashboard-view" class="w-full h-full hidden flex flex-col fade-in relative">
+
+
+
+        <!--Next Page Section-->
+
+
+
+        <section id="dashboard-view" class="w-full h-full hidden flex flex-col fade-in relative"> <!-- Dashboard view hidden by default -->
             
-            <header class="glass-card w-full p-4 mb-6 flex justify-between items-center sticky top-0 z-10">
+            <header class="glass-card w-full p-4 mb-6 flex justify-between items-center sticky top-0 z-10"> <!--Name and Logout button Lock {sticky top-0} -->  <!--{z-10} Header sob text opore thakbe -->
+
+
                 <div class="flex items-center gap-3">
                     <div class="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center text-blue-900 font-bold" id="avatar-initials">RR</div>
                     <div>
