@@ -2,12 +2,12 @@
 <html lang="en">                                
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Responsive design -->
     <title>JIS UNIVERSITY | LOST & FOUND PORTAL</title>
     <Script src ="" ></Script>
     <link rel = "stylesheet" href = "">
     <link href = "" rel="stylesheet" 
-    <link rel = "stylesheet" href = "style.css">
+    <link rel = "stylesheet" href = "style.css"> <!-- Tailwind CSS connection -->
     </head>
 <body class="text-gray-800 h-screen flex flex-col">
 
@@ -29,8 +29,9 @@
                 </div>
 
                 <div class="flex justify-center mb-6 border-b border-gray-200">
-                    <button onclick="switchLoginTab('student')" id="tab-student" class="tab-active w-1/2 pb-2 text-center transition-colors">Student</button>
-                    <button onclick="switchLoginTab('faculty')" id="tab-faculty" class="tab-inactive w-1/2 pb-2 text-center transition-colors">Faculty</button> <!-- Student/Faculty tabs -->
+                    <button onclick="switchLoginTab('student')" id="tab-student" class="tab-active w-1/2 pb-2 text-center transition-colors">Student</button> <!-- Active tab styling -->
+                    <button onclick="switchLoginTab('faculty')" id="tab-faculty" class="tab-inactive w-1/2 pb-2 text-center
+                    transition-colors">Faculty</button> <!-- Student/Faculty tabs -->
                 </div>
 
                 <form id="login-form" onsubmit="handleLogin(event)" class="space-y-4">
