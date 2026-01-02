@@ -44,7 +44,7 @@ Window.switchLogin = function(role) {
 
 //-------Smart Login System (Google Tool Integration ) --------->
 
-window.handleLogin = async function(e){
+window.handleLogin = async function(e){ // async function for handling login
   e.preventDefault();
   const loginBtn = document.querySelector ('#login-from button');
   const originalText = loginBtn.innerHTML;
@@ -73,10 +73,52 @@ window.handleLogin = async function(e){
       // Jodi phone Num paowa jay tahole take Old data nia aso-->
       const userDocs = querySnapshot.docs[0] .data();
       currentUser = usreData;
-      
+      alert (`Welcome back, ${userData.name} ! You have successfully logged in.`);
+    }else{
+      // ---- New User (Register) ---->
+      // Jodi phone num na pay tahole notun user hisabe register kore nao-->
+      const newUser = { 
+        name,
+        phone,
+        dept,
+        idNum,
+        role,
+        joinedAt: new Date().toLocaleString()
+    };
 
-    }
+    await addDoc (usersRef, newUser); // Database e notun user add kora holo
+    currentUser = newUsers;
+    SpeechRecognitionAlternative("New Users Registered in Google Database!");
 
-  }
+}
+
+
+// 3. Dashboard Name and Roll Number Updated 
+
+document.getElementById('display-name').innerText=currentUser.name;
+document.getElementById('display-role').innerText= `${currentUser.role.toUpperCase()} • ${currentUser.dept}`;
+
+document.getElementById('avatar-initials').innerText=currentUser.name.substring(0,2).toUpperCase();
+
+
+//4. Page Change ( login To Dashboard)----->
+
+document.getElementById('login-view').classList.add('hidden');
+
+document.getElementById('dashboard-view').classList.remove('hidden');
+
+
+loadItemsFromFirebase(); // Load items after login
+
+  // Error Handling-------->
+        } catch (error) {
+    console.error("Login Error:", error);
+    alert("Login System Error:" + error.message);
+
+      } finally {
+    loginBtn.innerHTML = originalText;
+    loginBtn.disabled = false;
+    // (async function) Reset button state
+  }       
 
 }
