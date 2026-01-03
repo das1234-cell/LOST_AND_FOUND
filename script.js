@@ -162,6 +162,23 @@ if (isLost){ imgSection.classList.add('hidden'); } else imgSection.classList.rem
 document.getElementById('report-modal').classList.remove('hidden'); // Show modal
 }
 
+window.closeModal = function(id){
+  const item = items.find(i => i.id === id); // Find item by ID
+  if (item) return;// If item exists, do nothing
 
+  editingItemId = id; // Set editing item ID
+
+  document.getElementById('report-type').value=item.type;
+  document.getElementById('item-name').value=item.item.name;
+  document.getElementById('item-location').value=item.item.location;
+  document.getElementById('item-desc').value=item.item.desc;
+  // Pre-fill form fields with item data
+
+
+
+
+
+
+}
 
 
