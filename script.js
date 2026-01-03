@@ -122,3 +122,46 @@ loadItemsFromFirebase(); // Load items after login
   }       
 
 }
+
+//Logout function----->
+
+window.handleLogout=function (){ // Logout  button function
+  currentUser=null;
+  document.getElementById('login-from').reset(); // Reset login form
+  document.getElementById('dashboard-view').classList.add('hidden');// Hide dashboard
+  document.getElementById('login-view').classList.remove('hidden'); // Show login view
+}
+
+
+// ----Modal------>
+
+window.openModal = function(){
+  editingItemId = null; // Reset editing item ID
+document.getElementById('submit-btn').innerText="Submit Report"; // Submit button text reset
+
+
+const isLost = type === 'lost';
+document.getElementById('report-type').value=type;
+document.getElementById('model-title').innerText= isLost ? 
+'Report Lost Item':'Report Found Item'; // Modal title update
+
+
+const submitBtn = document.getElementById('submit-btn'); submitBtn.className = `w-full py-3 rounded-lg font-bold text-white shadow-lg mt-2 transition-transform active:scale-95 ${ isLost ? 'bg-red-600'  : 'bg-green-600'}`; // Submit button color update
+
+const imgSection = document.getElementById('image-upload-section');
+if (isLost){ imgSection.classList.add('hidden'); } else imgSection.classList.remove('hidden'); // Show image upload for found items
+
+
+
+  if (currentUser){
+    document.getElementById('contact-name').value=currentUser.name;
+    document.getElementById('contact-phone').value=currentUser.phone;
+// Pre-fill contact info if logged in
+}
+
+document.getElementById('report-modal').classList.remove('hidden'); // Show modal
+}
+
+
+
+
