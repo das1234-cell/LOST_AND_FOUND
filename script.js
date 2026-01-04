@@ -175,10 +175,58 @@ window.closeModal = function(id){
   // Pre-fill form fields with item data
 
 
+  document.getElementById('model-title').innerText="Edit Your Post"; // Update modal title
+
+ const btn = document.getElementById('submit-btn');   
+  btn.innerText="Update Changes"; // Update button text
+
+  btn.className= 'w-full py-3 rounded-lg font-bold text-white shadow-lg mt-2 bg-blue-600 hover:bg-blue-700'; // Update button color
+
+  const imgSection= document.getElementById('image-upload-section');
+  if (item.type === 'lost') imgSection.classList.add('hidden');
+else imgSection.classList.remove('hidden'); // Show/hide image upload section based on item type
 
 
+document.getElementById('contact-name').value=item.reporter;
+document.getElementById('contact-phone').value=item.phone;
+// Pre-fill contact info if logged in
 
+document.getElementById('report-modal').classList.remove('hidden'); // Show modal
 
 }
 
 
+
+window.closeModal = function(){
+  document.getElementById('report-modal').classList.add('hidden'); // Hide modal
+
+  document.getElementById('item-form').reset(); // Reset form fields
+  document.getElementById('image-preview').classList.add('hidden'); // Hide image preview
+
+  editingItemId = null; // Reset editing item ID
+}
+
+
+
+window.previewImage=function(input){
+  const preview = document.getElementById('image-preview');
+
+  if (input.files && input.files[0]){ // Check if file is selected
+    const  reader = new FileReader(); // FileReader object to read file
+
+    reader.onload=function(e){
+      preview.src=e.target.result; // Set preview image source
+
+      preview.classList.remove('hidden'); // Show preview
+    }
+       reader.readAsDataURL(input.files[0]); // Read file as data URL
+  }
+}
+
+
+
+
+
+//===========================================================
+//4. Firebase Logic
+//===========================================================
