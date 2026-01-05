@@ -116,6 +116,21 @@
                 <button onclick="openModal('lost')" class="glass-card p-6 flex items-center justify-between group hover:bg-red-50 transition-all cursor-pointer border-l-4 border-red-500">
                     <div class="text-left">
                         <h3 class="text-xl font-bold text-red-600">I LOST Something</h3>
-                        <p class="text-sm text-gray-500">Report a missing item immediately</p>
+                        <p class="text-sm text-gray-500">Report a missing item immediately</p> <!-- Lost Item Section -->
                     </div>
-                    
+                    <div class ="w-12 h-12 bg-red-100 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform">
+                        <i class="fa-solid fa-magnifying-glass text-red-500 text-xl"></i> <!-- Magnifying Glass ICON -->
+                    </div>
+                </button>
+
+                <button onclick="openModal('found')" class="glass-card p-6 flex items-center justify-between group hover:bg-green-50 transition-all cursor-pointer border-l-4 border-green-500"> <!-- Found Item Section -->
+                    <div class="text-left">
+                        <h3 class="text-xl font-bold text-green-600">I FOUND Something</h3>
+                        <p class="text-sm text-gray-500">Report an item you have found</p>
+                    </div>
+                    <div class ="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform">
+                        <i class="fa-solid fa-hand-holding-box text-green-500 text-xl"></i> <!-- Hand Holding Box ICON -->
+                    </div>
+
+                </button>
+            </div>
