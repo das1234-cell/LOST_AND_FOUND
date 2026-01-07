@@ -174,7 +174,39 @@
 
 
     <from id="item-from" onsubmit ="submitItem(event)" class="space-y-4">
-        <input type=""
+        <input type="hidden" id="report-type"><!--SubmitItem Function Work-->
+        <div>
+            <label class ="block text-xs font-semibold text-gray-600 uppercase mb-1">Item Name</label>
+            <input type="text" id="item name" required class="w-full p-3 rounded-lg border border-gray-300 bg-white/50 focus:ring-2 focus:ring-blue-500"> <!--Item Name and Text design box-->
+
+        </div>
+
+        <div>
+            <label class="block text-xs front-semibold text-gray-600 uppercase mb-1">Location (where?)</label> <!--Location Section-->
+
+            <input type="text" id="item-location" required placeholder="e.g. Library 3rd Floor" class="w-full p-3 rounded-lg borded border-gray-300 bg-white/50"> 
+        </div> <!--Location Text box design-->
+     
+         <div id="image-upload-section" class="hidden">
+            <label class ="block text-xs font-semibold text-gray-600 uppercase mb-1">Upload Photo (Proof)</label> <!--Photo Section-->
+            <div class="flex items-center gap-4">
+                <label class="cursor-pointer bg-white border border-gray-300 px-4 py-2 rounded-lg hover:bg-gray-50 text-sum flex items-center gap-2"><!--Photo Section Design-->
+                    <i class="fa-soild fa-camera"></i>
+                     Choose File <input type="file" id="item-image" accept="image/*" class="hidden" onchange="previewImage(this)"> <!--Choose Photo file Section-->
+                </label>
+
+
+
+
+
+
+
+
+            </div>
+         </div>
+   
+
+
     </from>
 
 
