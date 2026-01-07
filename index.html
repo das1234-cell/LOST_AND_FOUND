@@ -160,5 +160,39 @@
 
 
 <div id="report-modal" class="fixed inset-0 z-50 hidden flex items-center justify-center p-4">
-    <div
+    <div class="absolute inset-0 bg-black/60 backdrop-blur-sm" onclick="closeModal()"></div> <!-- Modal Background Blur -->
+
+   <div class="glass-card w-full max-w-lg relative z-10 p-6 fade-in max-h-[90vh] overflow-y-auto"> <!--from animation-->
+       
+       <button onclick="closeModal()" class="absolute top-4 right-4 text-gray-400 hover:text-gray-600 ">
+       <i class="fa-solid fa-xmark text-xl" ></i>
+       <!--Report close 'X' icon button-->
+    </button>
+    
+    <h2 id="modal-title" class="text-2xl front-bold mb-1">Report Item</h2>
+    <p class="text-sum text-gray-500 mb-6">Fill in the details below.</p> <!--Report Header Text-->
+
+
+    <from id="item-from" onsubmit ="submitItem(event)" class="space-y-4">
+        <input type=""
+    </from>
+
+
+
+   </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 </div>
