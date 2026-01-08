@@ -230,3 +230,61 @@ window.previewImage=function(input){
 //===========================================================
 //4. Firebase Logic
 //===========================================================
+
+//=============================================================
+//SMART IMAGE COMPRESSOR & UPLOAD LOGIC
+//=================================================================
+
+//1. Big size picture compress to small size picture--->
+
+
+const compressImage =(file) => {
+  return new Promise ((resolve, reject) =>{
+    const maxWith = 800; // Picture size maximum 800 px 
+    const reader = new FileReader(); // Javascript read file
+    reader.readAsDataURL(file); //start read file
+
+    reader.onload = (event) => {
+      const img = new Image();
+      img.src = event.target.result;// Image File attach 
+      img.onload= () =>{ // image load finish, next-->
+
+        const canvas = document.createElement('canvas'); // Javascript canvas use
+        let width = img.width;
+        let height =img.height; // Height and Width measure
+
+        //size small logic (math)
+        if (width>maxWidth) {
+          height *= maxWidth/width;
+          width=maxWidth; 
+        }
+
+        canvas.width = width;
+        canvas.height= height; //real height and width convert to canvas size
+
+        const ctx = canvas.getContext('2d');
+        ctx.drewImage(img,0,0,width,height); // resize canvas drew
+
+        // Picture JPEG format ans 70% quality convert--->
+
+        const DataUrl= canvas.toDataURL('image/jpeg',0.7); 
+        // 0.7 means (70%) and 30% details down and resize picture 
+
+        resolve(dataUrl); // Sent to small size pic main program and promise complete 
+       
+      };
+    };
+
+    reader.onerror = (error) => reject(error); // file porte osubidha hole error asbe 
+
+  });
+};
+
+
+
+
+
+
+
+
+// [A] SUBMIT & UPDATE (AUTO COMPRESS VERSION)====>
