@@ -288,3 +288,69 @@ const compressImage =(file) => {
 
 
 // [A] SUBMIT & UPDATE (AUTO COMPRESS VERSION)====>
+window.submitItem = async function(e){ //async please wait....
+
+e.preventDefault(); // page not reload after submit
+
+const btn = document.getElementById('submit-btn');
+const originalText = btn.innerText;  // save submit_button and use
+
+//Loading---->
+
+btn.innerText = "Compressing & Saving..."; // button change and show compress & saving button
+
+btn.disable = true; // and last button useless
+
+const type =document.getElementById('report-type').value;
+const name =document.getElementById('item-name').value;
+const location = document.getElementById('item-location').value;
+const desc = document.getElementById('item-desc').value;
+// { type, name, location, desc => .value }
+
+const itemData = { type, name, location, desc }; //itemData bag use (Fire Base ) Send
+
+
+// --- Picture Processing start --->
+
+const fileInput = document.getElementById('item-image');
+
+if (fileInput.files.length > 0) { // check user select  picture file
+  
+  try {
+    // call compress function -->
+    const compressImage = await compressImage(fileInput.files[0]); //  picture is not compress please wait 
+
+    item.Data = compressImage; // itemData bag use ( fireBase send )
+
+} catch (error) {
+  console.error("Image Error :", error);
+  alert("Could not process image. Try another one.");
+  btn.disable=false;
+  return;
+
+
+ } // picture compress error section
+} else {
+
+  // if you don't give a new  picture at the time of editing
+  if(!editingItemId) itemData.image=null;
+}
+
+
+
+// === DataBase ( FireBase ) send { itemData } --->
+
+try {
+  if (editingItemId){
+    const itemRef = doc(db, "item", editingItemId); // FireBase items file found use doc
+  }
+}
+
+
+
+
+
+
+
+
+}
