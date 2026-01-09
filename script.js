@@ -343,14 +343,47 @@ if (fileInput.files.length > 0) { // check user select  picture file
 try {
   if (editingItemId){
     const itemRef = doc(db, "item", editingItemId); // FireBase items file found use doc
+    if (!itemData.image){
+      delete itemData.image; // before image not null
+    }
+      
+    await updateDoc(itemRef,itemData);
+    alert("Post Updated Successfully!");// wait!! edit post update firebase
+  }else{
+    itemData.reporter = currentUser.name;
+    itemData.phone = currentUser.phone; // new post so, name and phone number automatic fileup
+
+    itemData.time = new Data().toLocaleString(); 
+    itemData.timestamp = Data.now(); // Newest first 
+
+
+   await addDoc(collection(db,"items"), itemData);
+   alert ("Item Reported Successfully!");
+
+  }
+  closeModal();
+  loadItemsFromFirebase(); // pop-up box hided and screen not refresh show new post and edit post
+
+
+}catch (error) {
+  console.error("Error", error);
+  // So, tao error dile next user ke bolbe ==>
+
+    if(error.code === 'resource-exhausted'){
+      alert("Quota exceeded! Database full for today."); // user show message
+
+    }else{
+      alert("Error: " + error.message);
+
+    }
+} finally {
+  btn.innerText = originalText;
+  btn.disabled = false; // Saving... after submit button reset 
+
   }
 }
 
 
 
 
-
-
-
-
-}
+//[B] DELETE =====================>
