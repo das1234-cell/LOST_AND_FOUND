@@ -387,3 +387,37 @@ try {
 
 
 //[B] DELETE =====================>
+
+  window.deleteItem = async function (itemId) {
+    if(!confirm("Are you sure you want to delete this post?")) // Pop-up box user ke confirm korar jonno
+      return; // user cancel delete
+      try{
+        await deleteDoc (doc(db,"items", itemId)); // FireBase theke item delete korbe
+        alert("Post Deleted Successfully!"); // user ke delete success message
+        loadItemsFromFirebase();// delete er por notun post load korbe
+      }catch(error){
+        console.error("Error ", error);
+        alert("Error deleting:" + error.message); // user ke delete error message
+      }
+    
+  }
+
+
+
+
+  //[C] LOAD ITEMS (DATA) FROM FIREBASE ==============>
+
+    async function loadItemsFromFirebase() {
+      const grid = document.getElementById('feed-grid'); // post show korar jayga
+      grid.innerHTML = '<p class="text-center w-full col-span-3">Loading from cloud...</p>';// loading message
+
+      try{
+        const q = query (collection(db, "item"), orderBy ("timestamp", "desc")); // newest first
+        const querySnapshot = await getDoc (q); // FireBase theke data ana
+
+        items = []; // items array reset
+        querySnapshot.forEach(())
+      }
+
+      
+    }
