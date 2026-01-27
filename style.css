@@ -4,26 +4,30 @@ body {
     margin: 0;
     padding: 0;
     overflow-x: hidden;
-
 }
 
 /* visual design - background and overlay */
 .app-background {
-    /*   <div class="app-background"></div>  */
+    /* <div class="app-background"></div>  */
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background-image: url('https://images.unsplash.com/photo-1562774053-701939374585?q=80&w=1986&auto=format&fit=crop');
+    
+    /* তোমার ছবির নাম ঠিক আছে */
+    background-image: url('https://image2url.com/r2/default/images/1769496193896-deeaa3d8-c4d8-49e3-a755-61e6aeaaf237.jpg'); 
 
-    background-position: cover;
-    /* collage pic cover full screen */
+    /* FIXED: cover value is for background-size, not position */
+    background-size: cover; 
+    
     background-position: center;
     /* collage pic center the image */
+    
+    background-repeat: no-repeat;
+    
     z-index: -2;
     /* -2 sober age collage pic thakbe  */
-
 }
 
 .app-overlay {
@@ -33,42 +37,47 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 30, 60, 0.85);
+    
+    /* Dark blue overlay - FIXED: removed space after rgba */
+    background: rgba(0, 30, 60, 0.4);
+    
     /* Dark blue overlay with 85% opacity and 15% clear and collage pic blue color effect*/
     z-index: -1;
     /* -1 collage pic opore thakbe blue color effect */
-
 }
 
 
 /* glass card effect & glassmorphism effect */
 .glass-card {
-    background: rgb(255, 255, 255, 0.9);
+    /* FIXED: rgb -> rgba and removed space */
+    background: rgba(255, 255, 255, 0.9);
     /* login page white color  */
 
-    border: 1px solid rgb(255, 255, 255, 0.3);
+    /* FIXED: rgb -> rgba and removed space */
+    border: 1px solid rgba(255, 255, 255, 0.3);
     /* semi-transparent white all border */
 
-    box-shadow: 0 8px 32px 0 rgb(0, 0, 0, 0.37);
+    /* FIXED: rgb -> rgba and removed space */
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
     /* shadow effect */
 
+    /* FIXED: removed space after blur */
     backdrop-filter: blur(12px);
-    /*  background collage pic blur glass effect */
+    /* background collage pic blur glass effect */
 
+    /* FIXED: removed space after blur */
     -webkit-backdrop-filter: blur(12px);
     /* for safari , iphone */
 
 
     border-radius: 16px;
     /* rounded corners (login page , i lost , i found buttons) */
-
-
 }
 
 
 /* design scrollbar */
 
-/*  HTML "Recent Activity" 
+/* HTML "Recent Activity" 
 
 - <div id="feed-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 pb-20 overflow-y-auto">
                 </div>  */
@@ -83,16 +92,17 @@ body {
 }
 
 ::-webkit-scrollbar-track {
-    background: rgb (255, 255, 255, 0.1);
+    /* FIXED: rgb -> rgba and removed space */
+    background: rgba(255, 255, 255, 0.1);
     /* scrollbar track color */
 }
 
 ::-webkit-scrollbar-thumb {
-    background-color: rgb (255, 255, 255, 0.3);
+    /* FIXED: rgb -> rgba and removed space */
+    background-color: rgba(255, 255, 255, 0.3);
     /* scrollbar thumb color */
     border-radius: 4px;
     /* scrollbar thumb rounded corners */
-
 }
 
 
