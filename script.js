@@ -69,13 +69,13 @@ window.handleLogin = async function(e) { //async function for handling login
         if (!querySnapshot.empty) {
             // --- Old User  (LOGIN) ---
             // Jodi phone Num
-            // পুরনো ডাটা নিয়ে আসো
+            // load a new data
             const userData = querySnapshot.docs[0].data();
             currentUser = userData;
             alert(`Welcome back, ${userData.name}! Login Successful.`);
         } else {
-            // --- নতুন ইউজার (REGISTRATION) ---
-            // যদি না মেলে, তবে নতুন করে সেভ করো
+            // --- New User (REGISTRATION) ---
+            // jodi na mele new kore start kora 
             const newUser = { 
                 name, 
                 phone, 
@@ -198,10 +198,10 @@ window.previewImage = function(input) {
 // SMART IMAGE COMPRESSOR & UPLOAD LOGIC
 // ==========================================
 
-// ১. এই ফাংশনটা বড় ছবিকে ছোট (Compress) করে
+// ১. this function big size pic convert to small size(Compress) -------->
 const compressImage = (file) => {
     return new Promise((resolve, reject) => {
-        const maxWidth = 800; // ছবির সাইজ এর বেশি হবে না
+        const maxWidth = 800; // limit pic size
         const reader = new FileReader();
         reader.readAsDataURL(file);
         reader.onload = (event) => {
@@ -212,7 +212,7 @@ const compressImage = (file) => {
                 let width = img.width;
                 let height = img.height;
 
-                // সাইজ ছোট করার লজিক
+                // small size logic
                 if (width > maxWidth) {
                     height *= maxWidth / width;
                     width = maxWidth;
@@ -223,7 +223,7 @@ const compressImage = (file) => {
                 const ctx = canvas.getContext('2d');
                 ctx.drawImage(img, 0, 0, width, height);
 
-                // ছবিকে JPEG ফরম্যাটে এবং ৭০% কোয়ালিটিতে কনভার্ট করা হচ্ছে
+                // pic JPEG format and 70% quality convert
                 const dataUrl = canvas.toDataURL('image/jpeg', 0.7);
                 resolve(dataUrl);
             };
@@ -239,7 +239,7 @@ window.submitItem = async function(e) {
     const btn = document.getElementById('submit-btn');
     const originalText = btn.innerText;
     
-    // লোডিং দেখাবে
+    // loading------>
     btn.innerText = "Compressing & Saving..."; 
     btn.disabled = true;
 
@@ -250,12 +250,12 @@ window.submitItem = async function(e) {
 
     const itemData = { type, name, location, desc };
 
-    // --- ছবি প্রসেসিং শুরু ---
+    // --- pic processing start--->
     const fileInput = document.getElementById('item-image');
     
     if(fileInput.files.length > 0) {
         try {
-            // এখানে আমরা কম্প্রেস ফাংশন কল করছি
+            // compress function call
             const compressedImage = await compressImage(fileInput.files[0]);
             itemData.image = compressedImage; 
 
@@ -267,11 +267,11 @@ window.submitItem = async function(e) {
             return;
         }
     } else {
-        // এডিটের সময় নতুন ছবি না দিলে
+        // editing  time e jodi pic na dile
         if (!editingItemId) itemData.image = null;
     }
 
-    // --- ডাটাবেসে পাঠানো ---
+    // --- Data base sent --->
     try {
         if (editingItemId) {
             const itemRef = doc(db, "items", editingItemId);
@@ -293,7 +293,7 @@ window.submitItem = async function(e) {
         loadItemsFromFirebase(); 
     } catch (error) {
         console.error("Error:", error);
-        // যদি তাও এরর দেয়, ইউজারকে বলবে
+        // if it still gives error, tell user
         if (error.code === 'resource-exhausted') {
             alert("Quota exceeded! Database full for today.");
         } else {
