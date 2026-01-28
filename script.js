@@ -9,7 +9,7 @@ import { getFirestore, collection, addDoc, getDocs, orderBy, query, deleteDoc, u
 
 // Configure Firebase
 const firebaseConfig = {
-    apiKey: "AIzaSyCSt0trZwnwNPO3QEFbVI7CvB87tH3-OBw",
+    apiKey: "AIzaSyCSt0trZwnwNPO3QEFbVI7CvB87tH3-OBw", //API key secure
     authDomain: "jis-lost-found.firebaseapp.com",
     projectId: "jis-lost-found",
     storageBucket: "jis-lost-found.firebasestorage.app",
